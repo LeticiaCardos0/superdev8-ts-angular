@@ -1,0 +1,24 @@
+<ul class="ml-2">
+    @if(clientes.length === 0){
+        <span>Nenhum cliente cadastrado</span>
+    } @else{
+             
+        @for(cliente of clientes; let i = $index; track cliente){
+            <li>
+                <span>{{cliente}} - {{cpfs[i]}}</span>
+                <button class="text-yellow-500" (click)="preencherCampoParaEditar(cliente, cpfs[i])"><i class="fa-solid fa-pencil"></i></button>
+                <button class="text-red-700" (click)="apagar(cliente)"><i class="fa-solid fa-trash"></i></button>
+            </li>
+        }
+    }
+</ul>
+
+<div>
+    <label for="campo-nome">Nome</label>
+    <input id="campo-nome" type="text" class="border rounded-md" [(ngModel)]="nome">
+
+    <label for="campo-cpf">CPF</label>
+    <input id="campo-cpf" type="text" class="border rounded-md" [(ngModel)]="cpf">
+    
+    <button class="bg-teal-300 pt-1 pb-1 pl-2 pr-2 ml-2 rounded-sm border" (click)="salvar()">Salvar</button>
+</div>

@@ -1,0 +1,95 @@
+<div class="max-w-4xl mx-auto p-6">
+
+    <!-- Título -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">Cadastrar Produtos</h1>
+        <p class="text-gray-600 mt-2">Gerencie sua lista de produtos</p>
+    </div>
+
+    <!-- Formulário -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">
+            <i class="fa-solid fa-box-open mr-2"></i>
+            Novo Produto
+        </h2>
+
+        <div class="flex flex-col md:flex-row gap-4 items-end">
+            <div class="flex-1 w-full">
+                <label for="campo-nome" class="block text-gray-700 font-medium mb-2">
+                    Nome do Produto
+                </label>
+
+                <input type="text" id="campo-nome" [(ngModel)]="nome" placeholder="Digite o nome do produto"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition">
+            </div>
+            <div class="flex-1 w-full">
+                <label for="campo-quantidade" class="block text-gray-700 font-medium mb-2">
+                    Quantidade Em Estoque
+                </label>
+
+                <input type="number" id="campo-quantidade" [(ngModel)]="quantidade"
+                    placeholder="Digite o quantidade do produto"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition">
+            </div>
+
+            <button (click)="salvar()"
+                class="bg-gradient-to-r from-teal-400 to-teal-600 hover:from-teal-500 hover:to-teal-700 text-white font-semibold py-2 px-6 rounded-lg transition transform hover:scale-105 shadow-md">
+                <i class="fa-solid fa-save mr-2"></i>
+                Salvar
+            </button>
+        </div>
+    </div>
+
+    <!-- Lista -->
+  <div class="bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="bg-gradient-to-r from-teal-500 to-teal-600 px-6 py-4">
+            <h2 class="text-xl font-semibold text-white">
+                <i class="fa-solid fa-boxes-stacked mr-2"></i>
+                Produtos Cadastrados
+
+                <span class="text-sm ml-2 bg-teal-800 bg-opacity-20 px-2 py-1 rounded-full">
+                    {{ produtos.length }} produto(s)
+                </span>
+            </h2>
+        </div>
+
+        @if(produtos.length === 0){
+        <div class="text-center py-12">
+            <i class="fa-solid fa-box-open text-6xl text-gray-300 mb-4"></i>
+            <p class="text-gray-500 text-lg">Nenhum produto cadastrado</p>
+            <p class="text-gray-400">Adicione seu primeiro produto acima</p>
+        </div>
+        } @else {
+        <ul class="divide-y divide-gray-200">
+            @for(produto of produtos; let i = $index; track produtos){
+            <li class="px-6 py-4 hover:bg-gray-50 transition">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="flex-shrink-0">
+                            <div class="w-10 h-10 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold">
+                                {{ produto.charAt(0).toUpperCase() }}
+                            </div>
+                        </div>
+                        <span class="text-gray-800 font-medium text-lg">
+                            {{ produtos[i] }} - {{estoque[i]}}
+                        </span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="text-yellow-600 hover:text-yellow-700 bg-yellow-50 hover:bg-yellow-100 p-2 rounded-lg transition" (click)="preencherCampoParaEditar(produtos[i], estoque[i] )"
+                            title="Editar">
+                            <i class="fa-solid fa-pencil"></i></button>
+
+                        <button class="text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition" (click)="apagar(produto)" title="Excluir">
+                            <i class="fa-solid fa-trash"></i></button>
+                    </div>
+
+                </div>
+            </li>
+            }
+        </ul>
+
+        }
+
+    </div>
+
+</div>

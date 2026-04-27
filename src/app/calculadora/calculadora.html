@@ -1,0 +1,54 @@
+<div class="p-6">
+<div class="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
+  <!-- Título -->
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Calculadora</h2>
+  
+  <!-- Inputs -->
+  <div class="space-y-4">
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Número 1</label>
+      <input 
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        [(ngModel)]="numero1" 
+        type="number"
+        placeholder="Digite o primeiro número">
+    </div>
+    
+    <div>
+      <label class="block text-gray-700 font-medium mb-2">Número 2</label>
+      <input 
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        [(ngModel)]="numero2" 
+        type="number"
+        placeholder="Digite o segundo número">
+    </div>
+  </div>
+  
+  <!-- Botões de operação -->
+  <div class="grid grid-cols-2 gap-3 mt-6">
+    <button 
+      (click)="somar()" 
+      class="bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition transform hover:scale-105 shadow-md">
+      Somar
+    </button>
+    
+    <button 
+      (click)="subtrair()" 
+      class="bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-green-600 hover:to-green-700 transition transform hover:scale-105 shadow-md">
+      Subtrair
+    </button>
+    
+    <button 
+      (click)="multiplicar()" 
+      class="bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-purple-600 hover:to-purple-700 transition transform hover:scale-105 shadow-md">
+      Multiplicar
+    </button>
+    
+    <button 
+      (click)="dividir()" 
+      class="bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold py-2 px-4 rounded-lg hover:from-orange-600 hover:to-orange-700 transition transform hover:scale-105 shadow-md">
+      Dividir
+    </button>
+  </div>
+</div>
+</div>
